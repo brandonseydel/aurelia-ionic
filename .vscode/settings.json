@@ -1,0 +1,5 @@
+{
+    "html.customData": [
+      "./node_modules/@ionic/core/dist/html.html-data.json"
+    ]
+  }
