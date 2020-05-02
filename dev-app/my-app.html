@@ -44,17 +44,23 @@
         <ion-title>TEST 2</ion-title>
         <ion-item slot="end">
           <ion-label>Light</ion-label>
-          <ion-toggle checked.bind="class === 'dark-theme'" click.trigger="changeTheme()" color="dark"></ion-toggle>
+          <ion-toggle
+            checked.bind="class === 'dark-theme'"
+            click.trigger="changeTheme()"
+            color="dark"
+          ></ion-toggle>
           <ion-label>Dark</ion-label>
         </ion-item>
       </ion-toolbar>
     </ion-header>
-    <ion-content style="padding:100px!important;" class="ion-padding">
-      <ion-button color="danger" click.trigger="changeTheme()">Change Theme From Da Button</ion-button>
+    <ion-content style="padding: 100px !important;" class="ion-padding">
+      <ion-button color="danger" click.trigger="changeTheme()"
+        >Change Theme From Da Button</ion-button
+      >
 
-      <ion-chip color="success">${class}</ion-chip>
+      <ion-chip if.bind="class">${class}</ion-chip>
 
-      <ion-text color="secondary">
+      <ion-text if.bind="class" color="secondary">
         <h1>H1: The quick brown fox jumps over the lazy dog</h1>
       </ion-text>
 
@@ -79,7 +85,9 @@
         <ion-text color="danger"><sub>streets</sub></ion-text> of Soho in the
         rain. He <ion-text color="primary"><i>was</i></ion-text> looking for a
         place called Lee Ho Fook's. Gonna get a
-        <ion-text color="secondary"><a>big dish of beef chow mein.</a></ion-text>
+        <ion-text color="secondary"
+          ><a>big dish of beef chow mein.</a></ion-text
+        >
         <ion-text color="danger">
           <ion-icon name="cut"></ion-icon>
         </ion-text>
@@ -92,10 +100,12 @@
         </ion-card-header>
         <ion-card-content>
           WHOA NELLYYYYY
-        </ion-card-content>
-      </ion-card>
+        </ion-card-content> </ion-card
+      >F
 
-      <ion-button></ion-button>
+      <ion-button click.trigger="showActionSheet()">SHOW ACTION SHEEEEEETTTT</ion-button>
+      <ion-button click.trigger="showAlert()">SHOW ALERT</ion-button>
+      <ion-button color="dark" click.trigger="showToast()">SHOW TOAAAASSTTTT</ion-button>
       <ion-chip color=""></ion-chip>
       <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button>

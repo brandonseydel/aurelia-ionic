@@ -9,7 +9,6 @@
   "license": "UNLICENSED",
   "dependencies": {
     "aurelia": "dev",
-    "cordova-android": "^8.1.0",
     "@ionic/core": "^5.0.7",
     "ionicons": "5.0.1"
   },

@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const cssLoader = 'css-loader';
 const sassLoader = {
@@ -21,19 +21,19 @@ const postcssLoader = {
   }
 };
 
-module.exports = function(env, { analyze }) {
+module.exports = function (env, { analyze }) {
   const production = env === 'production' || process.env.NODE_ENV === 'production';
   return {
     mode: production ? 'production' : 'development',
     devtool: production ? 'source-maps' : 'inline-source-map',
-    entry: './src/main.ts',
+    entry: production ? './src/index.ts' : './dev-app/main.ts',
     output: {
-      path: path.resolve(__dirname, 'www'),
+      path: production ? path.resolve(__dirname, 'dist') : path.resolve(__dirname, 'www'),
       filename: 'entry-bundle.js'
     },
     resolve: {
       extensions: ['.ts', '.js'],
-      modules: [path.resolve(__dirname, 'src'), 'node_modules']
+      modules: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'dev-app'), 'node_modules']
     },
     devServer: {
       historyApiFallback: true,
@@ -47,8 +47,8 @@ module.exports = function(env, { analyze }) {
         { test: /\.woff2(\?v=[0-9]\.[0-9]\.[0-9])?$/i, loader: 'url-loader', options: { limit: 10000, mimetype: 'application/font-woff2' } },
         { test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/i, loader: 'url-loader', options: { limit: 10000, mimetype: 'application/font-woff' } },
         { test: /\.(ttf|eot|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/i, loader: 'file-loader' },
-        { test: /\.css$/i, use: [ 'style-loader', cssLoader, postcssLoader ] },
-        { test: /\.scss$/i, use: [ 'style-loader', cssLoader, postcssLoader, sassLoader ] },
+        { test: /\.css$/i, use: ['style-loader', cssLoader, postcssLoader] },
+        { test: /\.scss$/i, use: ['style-loader', cssLoader, postcssLoader, sassLoader] },
         { test: /\.ts$/i, use: ['ts-loader', '@aurelia/webpack-loader'], exclude: /node_modules/ },
         { test: /\.html$/i, use: '@aurelia/webpack-loader', exclude: /node_modules/ }
       ]
