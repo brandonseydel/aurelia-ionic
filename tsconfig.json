@@ -5,13 +5,14 @@
     "module": "esnext",
     "moduleResolution": "node",
     "skipLibCheck": true,
-    "rootDir": "src",
+    "rootDir": "dev-app",
     "target": "ES2017",
     "esModuleInterop": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "jsx": "preserve"
   },
   "include": [
     "dev-app",
-    "src",
+    "src"
   ]
 }

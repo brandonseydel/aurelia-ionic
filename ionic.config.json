@@ -1,7 +1,9 @@
 {
-  "name": "aurelia",
+  "name": "Trade Exchange",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
-  "type": "custom"
+  "type": "custom",
+  "id": "9c5961b2"
 }

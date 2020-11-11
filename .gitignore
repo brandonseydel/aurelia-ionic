@@ -31,9 +31,11 @@ Thumbs.db
 node_modules
 
 # Compiled files
-/dist
+www/
+dist/
 /.nyc_output
 /coverage
 platforms/
 plugins/
 resources/
+
