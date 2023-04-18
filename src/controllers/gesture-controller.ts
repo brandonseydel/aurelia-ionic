@@ -1,8 +1,6 @@
-import { type Gesture, type GestureConfig, createGesture } from "@ionic/core/dist/types/utils/gesture";
+import { createGesture, type Gesture, type GestureConfig } from '@ionic/core/components';
 
 export class GestureController {
-  constructor() {}
- 
   create(opts: GestureConfig): Gesture {
     return createGesture(opts);
   }

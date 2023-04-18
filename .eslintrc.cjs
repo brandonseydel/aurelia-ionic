@@ -64,14 +64,6 @@ module.exports = {
     "@typescript-eslint/no-unused-expressions": "off",
     "@typescript-eslint/no-explicit-any": "warn",
     "@typescript-eslint/ban-ts-comment": "warn",
-    "@typescript-eslint/naming-convention": [
-      "error",
-      {
-        selector: "interface",
-        format: ["PascalCase"],
-        prefix: ["I"]
-      }
-    ],
     "simple-import-sort/imports": [
       "error",
       {

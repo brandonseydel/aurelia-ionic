@@ -1,14 +1,12 @@
-import { IContainer, IRegistry, Registration, DI, } from '@aurelia/kernel';
-import { AttrSyntax, NodeObserverLocator, attributePattern, AppTask, IAttrMapper } from '@aurelia/runtime-html';
-
-import { IonicConfig, initialize } from '@ionic/core/components';
+import { CustomAttribute, CustomElement } from 'aurelia';
+import { IContainer, IRegistry, Registration } from '@aurelia/kernel';
+import { LoadCustomAttribute, ViewportCustomElement } from '@aurelia/router-lite';
+import { AppTask, attributePattern, AttrSyntax, IAttrMapper, NodeObserverLocator } from '@aurelia/runtime-html';
 
 import * as IonicComponents from './components';
 import * as IonicControllers from './controllers';
-import { CustomAttribute, CustomElement, inject } from 'aurelia';
-import { LoadCustomAttribute, ViewportCustomElement } from '@aurelia/router-lite';
 
-
+import { initialize, IonicConfig } from '@ionic/core/components';
 
 @attributePattern({ pattern: 'ion-PART', symbols: '-' })
 class IonAttributePattern {
@@ -26,12 +24,10 @@ export class IonicAurelia implements IRegistry {
   }
 
   register(container: IContainer): void {
-    const newContainer = DI.createContainer();
+    // eslint-disable-next-line no-console
     console.info('%cRegistering Ionic Framework....', 'color:cyan;background-color:black;font-size:1.2em;');
 
-    if (typeof (document as any) !== "undefined") {
-      document.documentElement.classList.add("ion-ce");
-    }
+    document.documentElement.classList.add('ion-ce');
 
     initialize({ ...this.config });
 
@@ -84,7 +80,7 @@ export class IonicAurelia implements IRegistry {
           'ION-TOGGLE': {
             value: valuePropertyConfig,
             checked: valuePropertyConfig,
-          }
+          },
         });
       }),
     ]);

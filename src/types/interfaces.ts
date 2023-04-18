@@ -1,4 +1,4 @@
-import { type Config } from "../controllers/config";
+import { type Config } from '@ionic/core/components';
 
 export interface IonicGlobal {
   config?: Config;

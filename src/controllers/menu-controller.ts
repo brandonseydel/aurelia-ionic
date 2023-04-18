@@ -1,7 +1,6 @@
 import { menuController } from '@ionic/core/components';
 
 export class MenuController {
-
   /**
    * Programmatically open the Menu.
    * @param [menuId]  Optionally get the menu by its id, or side.
