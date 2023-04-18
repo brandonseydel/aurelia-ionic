@@ -38,4 +38,5 @@ dist/
 platforms/
 plugins/
 resources/
-
+ios/
+android/

@@ -1,13 +1,63 @@
-import { ModalController } from "../../src/controllers/modal";
 
-import { IViewModel, inject } from "aurelia";
-import { IRouter } from "@aurelia/router";
+import { ICustomElementViewModel, customElement, } from "aurelia";
+import template from './app.html?raw';
+import './app.scss';
+import { mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline } from "ionicons/icons";
+import { route } from "@aurelia/router-lite";
 
-export class App implements IViewModel {
-  app: Element;
-  constructor(
-    @IRouter private readonly router: IRouter,
-    private readonly modalController: ModalController,
-  ) { }
-
+@customElement({ name: 'app', template:template })
+@route({
+  routes:[
+    {
+      path: '',
+      redirectTo:'/folder/Inbox'
+    },
+    {
+      path: '/folder/:id',
+      component: () => import ('../pages/folder')
+    }
+  ]
+})
+export class App implements ICustomElementViewModel  {
+  selectedIndex= 0;
+  bookmarkOutline = bookmarkOutline;
+  appPages = [
+    {
+      title: 'Inbox',
+      url: '/folder/Inbox',
+      iosIcon: mailOutline,
+      mdIcon: mailSharp,
+    },
+    {
+      title: 'Outbox',
+      url: '/folder/Outbox',
+      iosIcon: paperPlaneOutline,
+      mdIcon: paperPlaneSharp,
+    },
+    {
+      title: 'Favorites',
+      url: '/folder/Favorites',
+      iosIcon: heartOutline,
+      mdIcon: heartSharp,
+    },
+    {
+      title: 'Archived',
+      url: '/folder/Archived',
+      iosIcon: archiveOutline,
+      mdIcon: archiveSharp,
+    },
+    {
+      title: 'Trash',
+      url: '/folder/Trash',
+      iosIcon: trashOutline,
+      mdIcon: trashSharp,
+    },
+    {
+      title: 'Spam',
+      url: '/folder/Spam',
+      iosIcon: warningOutline,
+      mdIcon: warningSharp,
+    },
+  ];
+  labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 }

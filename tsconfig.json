@@ -1,18 +1,19 @@
 {
   "compilerOptions": {
+    "noEmit": true,
+    "strict": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "module": "esnext",
     "moduleResolution": "node",
     "skipLibCheck": true,
-    "rootDir": "dev-app",
-    "target": "ES2017",
+    "target": "es2022",
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "jsx": "preserve"
+    "importHelpers": true,
+    "forceConsistentCasingInFileNames": true,
+    "strictNullChecks": true,
+    "rootDir": ".",
   },
-  "include": [
-    "dev-app",
-    "src"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "dev-app/**/*.ts", "dev-app/**/*.d.ts", ],
 }

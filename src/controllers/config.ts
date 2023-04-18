@@ -1,51 +1,33 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { Config as CoreConfig, IonicConfig } from '@ionic/core';
+import { type Config as CoreConfig, type IonicConfig } from '@ionic/core/components';
 
 import { IonicWindow } from '../types/interfaces';
+import { singleton } from '@aurelia/kernel';
 
-const getConfig = (): CoreConfig | null => {
-    if (typeof (window as any) !== 'undefined') {
-      const Ionic = (window as any as IonicWindow).Ionic;
-      if (Ionic && Ionic.config) {
-        return Ionic.config;
-      }
-    }
-    return null;
-  };
+@singleton()
+export class Config implements Omit<CoreConfig, 'm'> {
+  config?: CoreConfig;
 
-export class Config {
+  constructor() {
+      this.config = (window as any as IonicWindow)?.Ionic?.config;
+  }
 
-  get(key: keyof IonicConfig, fallback?: any): any {
-    const c = getConfig();
-    if (c) {
-      return c.get(key, fallback);
-    }
-    return null;
+  reset(configObj: IonicConfig): void {
+    this.config?.reset(configObj);
+  }
+
+  set<T = any>(key: keyof IonicConfig, value: T): void {
+    this.config?.set(key, value);
+  }
+
+  get<T = any>(key: keyof IonicConfig, fallback?: T): T {
+      return this.config?.get(key, fallback);
   }
 
   getBoolean(key: keyof IonicConfig, fallback?: boolean): boolean {
-    const c = getConfig();
-    if (c) {
-      return c.getBoolean(key, fallback);
-    }
-    return false;
+      return this.config?.getBoolean(key, fallback) ?? false;
   }
 
   getNumber(key: keyof IonicConfig, fallback?: number): number {
-    const c = getConfig();
-    if (c) {
-      return c.getNumber(key, fallback);
-    }
-    return 0;
-  }
-
-  set(key: keyof IonicConfig, value?: any) {
-    console.warn(`[DEPRECATION][Config]: The Config.set() method is deprecated and will be removed in Ionic Framework 6.0. Please see https://ionicframework.com/docs/angular/config for alternatives.`);
-    const c = getConfig();
-    if (c) {
-      c.set(key, value);
-    }
+      return this.config?.getNumber(key, fallback) ?? 0;
   }
 }
-
-

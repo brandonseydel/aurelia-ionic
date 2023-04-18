@@ -1,20 +1,29 @@
-<ion-app class="${dark && 'dark-theme'}">
-  <ion-menu side="start" content-id="main-content">
-    <ion-header>
-      <ion-toolbar color="secondary">
-        <ion-title>Start Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
+<ion-app>
+  <ion-split-pane content-id="main-content">
+    <ion-menu content-id="main-content" type="overlay">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-list-header>Inbox</ion-list-header>
+          <ion-note>hi@ionicframework.com</ion-note>
 
-  <au-viewport default="login"></au-viewport>
+          <ion-menu-toggle :auto-hide="false" repeat.for="p of appPages" >
+            <ion-item @click="selectedIndex = $index" router-direction="root" :router-link="p.url" lines="none" :detail="false" class="hydrated" :class="{ selected: selectedIndex === $index }">
+              <ion-icon aria-hidden="true" slot="start" icon.bind="p.iosIcon" md.bind="p.mdIcon"></ion-icon>
+              <ion-label>${ p.title }</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+        <ion-list id="labels-list">
+          <ion-list-header>Labels</ion-list-header>
+
+          <ion-item repeat.for="label of labels" lines="none" :key="index">
+            <ion-icon aria-hidden="true" slot="start" icon.bind="bookmarkOutline" ></ion-icon>
+            <ion-label>${ label }</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content" ></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>

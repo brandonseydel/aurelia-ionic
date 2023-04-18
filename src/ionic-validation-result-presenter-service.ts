@@ -1,4 +1,3 @@
-import { Platform } from '@aurelia/runtime';
 import { ValidationResult } from "@aurelia/validation";
 import {
   ValidationResultsSubscriber,
@@ -42,8 +41,8 @@ export class IonicValidationResultPresenterService implements ValidationResultsS
   }
 
   public getValidationMessageContainer(target: Element): HTMLElement | null {
-    while (target.parentElement.tagName !== "ION-ITEM") {
-      target = target.parentElement;
+    while (target.parentElement && target.parentElement?.tagName !== "ION-ITEM") {
+      target = target.parentElement as Element;
     }
 
     const parent = target.parentElement;
@@ -51,7 +50,7 @@ export class IonicValidationResultPresenterService implements ValidationResultsS
     if (parent === null) {
       return null;
     }
-    let messageContainer = parent.nextElementSibling as HTMLElement;
+    let messageContainer = parent.nextElementSibling as HTMLElement | null;
     if (messageContainer?.tagName !== 'ION-ITEM' || !messageContainer?.attributes.getNamedItem(resultContainerAttribute)) {
       messageContainer = null;
     }
@@ -69,16 +68,14 @@ export class IonicValidationResultPresenterService implements ValidationResultsS
       messageContainer.style.color = "var(--ion-color-danger)";
       messageContainer.style.textAlign = "right";
       messageContainer.setAttribute("lines", "none");
-
-      // messageContainer.slot = 'secondary';
-      parent.parentElement.insertBefore(messageContainer, parent.nextElementSibling);
+      parent.parentElement?.insertBefore(messageContainer, parent.nextElementSibling);
     }
 
     return messageContainer;
   }
 
   public showResults(messageContainer: HTMLElement, results: ValidationResult[]) {
-    messageContainer.firstElementChild.append(
+    messageContainer.firstElementChild?.append(
       ...results.reduce((acc: Element[], result) => {
         if (!result.valid) {
           const span = PLATFORM.document.createElement("span") as HTMLSpanElement;

@@ -1,14 +1,15 @@
+import { type Config } from "../controllers/config";
+
 export interface IonicGlobal {
-    config?: any;
-    asyncQueue?: boolean;
+  config?: Config;
+  asyncQueue?: boolean;
 }
 
 export interface IonicWindow extends Window {
-    Ionic: IonicGlobal;
-    __zone_symbol__requestAnimationFrame?: (ts: FrameRequestCallback) => number;
+  Ionic: IonicGlobal;
 }
 
 export interface HTMLStencilElement extends HTMLElement {
-    componentOnReady(): Promise<this>;
-    forceUpdate(): void;
+  componentOnReady?(): Promise<this>;
+  forceUpdate?(): void;
 }
