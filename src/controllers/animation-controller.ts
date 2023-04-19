@@ -1,8 +1,7 @@
-import { singleton } from '@aurelia/kernel';
+import { IContainer, Registration } from '@aurelia/kernel';
 
 import { Animation, createAnimation, getTimeGivenProgression } from '@ionic/core/components';
 
-@singleton()
 export class AnimationController {
   /**
    * Create a new animation
@@ -27,5 +26,8 @@ export class AnimationController {
    */
   easingTime(p0: number[], p1: number[], p2: number[], p3: number[], progression: number): number[] {
     return getTimeGivenProgression(p0, p1, p2, p3, progression);
+  }
+  static register(container: IContainer) {
+    container.register(Registration.singleton(AnimationController, AnimationController));
   }
 }

@@ -1,8 +1,7 @@
-import { singleton } from '@aurelia/kernel';
+import { IContainer, Registration } from '@aurelia/kernel';
 
 import { menuController } from '@ionic/core/components';
 
-@singleton()
 export class MenuController {
   /**
    * Programmatically open the Menu.
@@ -98,5 +97,8 @@ export class MenuController {
    */
   getMenus() {
     return menuController.getMenus();
+  }
+  static register(container: IContainer) {
+    container.register(Registration.singleton(MenuController, MenuController));
   }
 }

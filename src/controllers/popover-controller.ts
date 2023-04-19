@@ -1,4 +1,4 @@
-import { singleton } from '@aurelia/kernel';
+import { IContainer, Registration } from '@aurelia/kernel';
 
 import { AureliaDelegate } from './framework-delegate';
 
@@ -7,7 +7,6 @@ import { defineCustomElement } from '@ionic/core/components/ion-popover';
 
 type PopoverControllerType = typeof popoverController;
 
-@singleton()
 export class PopoverController implements PopoverControllerType {
   constructor(private readonly delegate: AureliaDelegate) {}
 
@@ -20,5 +19,8 @@ export class PopoverController implements PopoverControllerType {
   }
   getTop(): Promise<HTMLIonPopoverElement | undefined> {
     return popoverController.getTop();
+  }
+  static register(container: IContainer) {
+    container.register(Registration.singleton(PopoverController, PopoverController));
   }
 }

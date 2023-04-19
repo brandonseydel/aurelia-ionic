@@ -1,10 +1,9 @@
-import { singleton } from '@aurelia/kernel';
+import { IContainer, Registration } from '@aurelia/kernel';
 
 import { alertController, type AlertOptions } from '@ionic/core/components';
 import { defineCustomElement } from '@ionic/core/components/ion-alert';
 
 type AlertControllerType = typeof alertController;
-@singleton()
 export class AlertController implements AlertControllerType {
   constructor() {
     defineCustomElement();
@@ -17,5 +16,9 @@ export class AlertController implements AlertControllerType {
   }
   getTop(): Promise<HTMLIonAlertElement | undefined> {
     return alertController.getTop();
+  }
+
+  static register(container: IContainer) {
+    container.register(Registration.singleton(AlertController, AlertController));
   }
 }

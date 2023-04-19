@@ -1,11 +1,10 @@
-import { singleton } from '@aurelia/kernel';
+import { IContainer, Registration } from '@aurelia/kernel';
 
 import { pickerController, type PickerOptions } from '@ionic/core/components';
 import { defineCustomElement } from '@ionic/core/components/ion-picker';
 
 type PickerControllerType = typeof pickerController;
 
-@singleton()
 export class PickerController implements PickerControllerType {
   create(options: PickerOptions): Promise<HTMLIonPickerElement> {
     defineCustomElement();
@@ -16,5 +15,8 @@ export class PickerController implements PickerControllerType {
   }
   getTop(): Promise<HTMLIonPickerElement | undefined> {
     return pickerController.getTop();
+  }
+  static register(container: IContainer) {
+    container.register(Registration.singleton(PickerController, PickerController));
   }
 }

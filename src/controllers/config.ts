@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { singleton } from '@aurelia/kernel';
+
+import { IContainer, Registration } from '@aurelia/kernel';
 
 import { IonicWindow } from '../types/interfaces';
 
 import { type Config as CoreConfig, type IonicConfig } from '@ionic/core/components';
 
-@singleton()
 export class Config implements Omit<CoreConfig, 'm'> {
   config?: CoreConfig;
 
@@ -31,5 +31,8 @@ export class Config implements Omit<CoreConfig, 'm'> {
 
   getNumber(key: keyof IonicConfig, fallback?: number): number {
     return this.config?.getNumber(key, fallback) ?? 0;
+  }
+  static register(container: IContainer) {
+    container.register(Registration.singleton(Config, Config));
   }
 }

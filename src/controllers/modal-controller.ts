@@ -1,4 +1,4 @@
-import { singleton } from '@aurelia/kernel';
+import { IContainer, Registration } from '@aurelia/kernel';
 
 import { AureliaDelegate } from './framework-delegate';
 
@@ -7,7 +7,6 @@ import { defineCustomElement } from '@ionic/core/components/ion-modal';
 
 type ModalControllerType = typeof modalController;
 
-@singleton()
 export class ModalController implements ModalControllerType {
   constructor(private readonly delegate: AureliaDelegate) {}
   create<T extends ComponentRef>(options: ModalOptions<T>): Promise<HTMLIonModalElement> {
@@ -22,5 +21,8 @@ export class ModalController implements ModalControllerType {
   }
   getTop(): Promise<HTMLIonModalElement | undefined> {
     return modalController.getTop();
+  }
+  static register(container: IContainer) {
+    container.register(Registration.singleton(ModalController, ModalController));
   }
 }

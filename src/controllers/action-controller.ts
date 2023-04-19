@@ -1,11 +1,10 @@
-import { singleton } from '@aurelia/kernel';
+import { IContainer, Registration } from '@aurelia/kernel';
 
 import { actionSheetController, type ActionSheetOptions } from '@ionic/core/components';
 import { defineCustomElement } from '@ionic/core/components/ion-action-sheet';
 
 type ActionSheetControllerType = typeof actionSheetController;
 
-@singleton()
 export class ActionSheetController implements ActionSheetControllerType {
   constructor() {
     defineCustomElement();
@@ -18,5 +17,8 @@ export class ActionSheetController implements ActionSheetControllerType {
   }
   getTop(): Promise<HTMLIonActionSheetElement | undefined> {
     return actionSheetController.getTop();
+  }
+  static register(container: IContainer) {
+    container.register(Registration.singleton(ActionSheetController, ActionSheetController));
   }
 }

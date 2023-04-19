@@ -1,9 +1,8 @@
-import { Constructable, IContainer, singleton } from '@aurelia/kernel';
+import { Constructable, IContainer, Registration } from '@aurelia/kernel';
 import { Controller, CustomElement } from '@aurelia/runtime-html';
 
 import { FrameworkDelegate } from '@ionic/core/components';
 
-@singleton()
 export class AureliaDelegate implements FrameworkDelegate {
   constructor(@IContainer readonly container: IContainer) {}
 
@@ -31,5 +30,8 @@ export class AureliaDelegate implements FrameworkDelegate {
     }
     await controller.activate(controller, null);
     return controller.host;
+  }
+  static register(container: IContainer) {
+    container.register(Registration.singleton(AureliaDelegate, AureliaDelegate));
   }
 }

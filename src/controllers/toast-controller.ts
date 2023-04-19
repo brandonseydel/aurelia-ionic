@@ -1,11 +1,10 @@
-import { singleton } from '@aurelia/kernel';
+import { IContainer, Registration } from '@aurelia/kernel';
 
 import { toastController, type ToastOptions } from '@ionic/core/components';
 import { defineCustomElement } from '@ionic/core/components/ion-toast';
 
 type ToastControllerType = typeof toastController;
 
-@singleton()
 export class ToastController implements ToastControllerType {
   create(options: ToastOptions): Promise<HTMLIonToastElement> {
     defineCustomElement();
@@ -16,5 +15,8 @@ export class ToastController implements ToastControllerType {
   }
   getTop(): Promise<HTMLIonToastElement | undefined> {
     return toastController.getTop();
+  }
+  static register(container: IContainer) {
+    container.register(Registration.singleton(ToastController, ToastController));
   }
 }
