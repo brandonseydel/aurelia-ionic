@@ -24,7 +24,7 @@ export default defineConfig({
           declaration: true,
           outDir: 'dist',
           exclude: ['**/__tests__'],
-          tsconfig: '../tsconfig.build.json',
+          tsconfig: './tsconfig.build.json',
         }),
       ],
     },
