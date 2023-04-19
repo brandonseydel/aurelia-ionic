@@ -28,6 +28,7 @@
   "devDependencies": {
     "sass": "^1.62.0",
     "@rollup/plugin-commonjs": "^24.1.0",
+    "@aurelia/platform-browser": "dev",
     "@aurelia/kernel": "dev",
     "@aurelia/runtime": "dev",
     "@aurelia/runtime-html": "dev",

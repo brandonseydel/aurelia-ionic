@@ -1,5 +1,7 @@
+import { IPlatform, Registration } from '@aurelia/kernel';
+import { BrowserPlatform } from '@aurelia/platform-browser';
 import { RouterConfiguration } from '@aurelia/router-lite';
-import Aurelia, { ShortHandBindingSyntax } from '@aurelia/runtime-html';
+import { Aurelia, ShortHandBindingSyntax, StandardConfiguration } from '@aurelia/runtime-html';
 import { ValidationHtmlConfiguration, ValidationTrigger } from '@aurelia/validation-html';
 
 import { IonicAurelia } from '../src/registration';
@@ -21,13 +23,16 @@ import '@ionic/core/css/display.css';
 /* Theme variables */
 import './theme/variables.scss';
 
-Aurelia.register(
-  ShortHandBindingSyntax,
-  RouterConfiguration.customize({ useUrlFragmentHash: false }),
-  ValidationHtmlConfiguration.customize((x) => {
-    x.DefaultTrigger = ValidationTrigger.change;
-  }),
-  IonicAurelia.config(),
-)
+void new Aurelia()
+  .register(
+    Registration.instance(IPlatform, BrowserPlatform),
+    StandardConfiguration,
+    ShortHandBindingSyntax,
+    RouterConfiguration.customize({ useUrlFragmentHash: false }),
+    ValidationHtmlConfiguration.customize((x) => {
+      x.DefaultTrigger = ValidationTrigger.change;
+    }),
+    IonicAurelia.config(),
+  )
   .app(App)
   .start();
