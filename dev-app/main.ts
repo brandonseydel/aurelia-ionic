@@ -34,5 +34,8 @@ void new Aurelia()
     }),
     IonicAurelia.config(),
   )
-  .app(App)
+  .app({
+    component: App,
+    host: document.querySelector('app') ?? document.documentElement,
+  })
   .start();
