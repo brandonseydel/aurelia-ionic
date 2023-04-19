@@ -1,11 +1,12 @@
-import { Constructable, IContainer, singleton } from '@aurelia/kernel';
+import { Constructable, IContainer, inject, singleton } from '@aurelia/kernel';
 import { Controller, CustomElement } from '@aurelia/runtime-html';
 
 import { FrameworkDelegate } from '@ionic/core/components';
 
 @singleton()
+@inject(IContainer)
 export class AureliaDelegate implements FrameworkDelegate {
-  constructor(@IContainer readonly container: IContainer) {}
+  constructor(readonly container: IContainer) {}
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async removeViewFromDom(_: any, component: HTMLElement): Promise<void> {

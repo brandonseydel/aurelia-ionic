@@ -1,7 +1,8 @@
 /// <reference types="vite/client" />
 
 declare module '*.html' {
-  import { IContainer, PartialBindableDefinition } from 'aurelia';
+  import { IContainer } from '@aurelia/kernel';
+  import { PartialBindableDefinition } from '@aurelia/runtime-html';
   export const name: string;
   export const template: string;
   export default template;

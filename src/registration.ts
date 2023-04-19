@@ -1,10 +1,9 @@
-import { CustomAttribute, CustomElement } from 'aurelia';
-import { IContainer, IRegistry, Registration } from '@aurelia/kernel';
-import { LoadCustomAttribute, ViewportCustomElement } from '@aurelia/router-lite';
-import { AppTask, attributePattern, AttrSyntax, IAttrMapper, NodeObserverLocator } from '@aurelia/runtime-html';
+import { IContainer, IRegistry } from '@aurelia/kernel';
+import { attributePattern, AttrSyntax } from '@aurelia/runtime-html';
 
 import * as IonicComponents from './components';
 import * as IonicControllers from './controllers';
+import { IonicMapper } from './ionic-mapper';
 
 import { initialize, IonicConfig } from '@ionic/core/components';
 
@@ -26,61 +25,8 @@ export class IonicAurelia implements IRegistry {
   register(container: IContainer): void {
     // eslint-disable-next-line no-console
     console.info('%cRegistering Ionic Framework....', 'color:cyan;background-color:black;font-size:1.2em;');
-
     document.documentElement.classList.add('ion-ce');
-
     initialize({ ...this.config });
-
-    container.register([
-      IonAttributePattern,
-      IonicComponents,
-      IonicControllers,
-      AppTask.creating(IContainer, (container) => {
-        const attrMapper = container.get(IAttrMapper);
-        const nodeObserverLocator = container.get(NodeObserverLocator);
-        attrMapper.useTwoWay((el, property) => {
-          return property === 'value';
-        });
-
-        const valuePropertyConfig = { events: ['input', 'change'] };
-        nodeObserverLocator.useConfig({
-          'ION-INPUT': {
-            value: valuePropertyConfig,
-          },
-          'ION-RADIO-GROUP': {
-            value: valuePropertyConfig,
-          },
-          'ION-TEXTAREA': {
-            value: valuePropertyConfig,
-          },
-          'ION-SEARCHBAR': {
-            value: valuePropertyConfig,
-          },
-          'ION-RANGE': {
-            value: valuePropertyConfig,
-          },
-          'ION-SELECT': {
-            value: valuePropertyConfig,
-          },
-          'ION-RADIO': {
-            value: { events: [...valuePropertyConfig.events, 'select'] },
-          },
-          'ION-SEGMENT': {
-            value: valuePropertyConfig,
-          },
-          'ION-DATETIME': {
-            value: valuePropertyConfig,
-          },
-          'ION-CHECKBOX': {
-            value: valuePropertyConfig,
-            checked: valuePropertyConfig,
-          },
-          'ION-TOGGLE': {
-            value: valuePropertyConfig,
-            checked: valuePropertyConfig,
-          },
-        });
-      }),
-    ]);
+    container.register(IonAttributePattern, IonicComponents, IonicControllers, IonicMapper);
   }
 }
