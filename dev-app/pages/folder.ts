@@ -1,5 +1,5 @@
-import { customElement } from 'aurelia';
 import { IRouter } from '@aurelia/router-lite';
+import { customElement } from '@aurelia/runtime-html';
 
 @customElement({
   name: 'folder',

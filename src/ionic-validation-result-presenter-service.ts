@@ -1,4 +1,4 @@
-import { PLATFORM } from 'aurelia';
+import { IPlatform } from '@aurelia/kernel';
 import { ValidationResult } from '@aurelia/validation';
 import { ValidationEvent, ValidationResultsSubscriber, ValidationResultTarget } from '@aurelia/validation-html';
 
@@ -8,6 +8,8 @@ const resultContainerClass = 'validation-area';
 
 export class IonicValidationResultPresenterService implements ValidationResultsSubscriber {
   public slot = 'end';
+
+  constructor(@IPlatform private readonly platform: IPlatform) {}
 
   public handleValidationEvent(event: ValidationEvent): void {
     for (const [target, results] of this.reverseMap(event.removedResults)) {
@@ -51,8 +53,8 @@ export class IonicValidationResultPresenterService implements ValidationResultsS
       messageContainer = null;
     }
     if (messageContainer === null) {
-      messageContainer = PLATFORM.document.createElement('ion-item') as HTMLElement;
-      const div = PLATFORM.document.createElement('div') as HTMLElement;
+      messageContainer = this.platform.globalThis.document.createElement('ion-item') as HTMLElement;
+      const div = this.platform.globalThis.document.createElement('div') as HTMLElement;
       div.slot = this.slot;
       div.classList.add(resultContainerClass);
       messageContainer.setAttribute('style', `${messageContainer.getAttribute('style') ?? ''};--min-height:0;margin-top:5px;`);
@@ -71,7 +73,7 @@ export class IonicValidationResultPresenterService implements ValidationResultsS
     messageContainer.firstElementChild?.append(
       ...results.reduce((acc: Element[], result) => {
         if (!result.valid) {
-          const span = PLATFORM.document.createElement('span');
+          const span = this.platform.globalThis.document.createElement('span');
           span.setAttribute(resultIdAttribute, result.id.toString());
           span.textContent = result.message ?? '';
           acc.push(span);
