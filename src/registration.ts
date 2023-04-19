@@ -1,4 +1,4 @@
-import { IContainer, IRegistry } from '@aurelia/kernel';
+import { IContainer } from '@aurelia/kernel';
 import { attributePattern, AttrSyntax } from '@aurelia/runtime-html';
 
 import * as IonicComponents from './components';
@@ -14,19 +14,23 @@ class IonAttributePattern {
   }
 }
 
-export class IonicAurelia implements IRegistry {
-  config: IonicConfig = {};
-  static config(config: IonicConfig = {}): IonicAurelia {
-    const instance = new IonicAurelia();
-    instance.config = config;
-    return instance;
-  }
-
-  register(container: IContainer): void {
-    // eslint-disable-next-line no-console
-    console.info('%cRegistering Ionic Framework....', 'color:cyan;background-color:black;font-size:1.2em;');
-    document.documentElement.classList.add('ion-ce');
-    initialize({ ...this.config });
-    container.register(IonAttributePattern, IonicComponents, IonicControllers, IonicMapper);
-  }
+function setup(container: IContainer, config: IonicConfig = {}): IContainer {
+  // eslint-disable-next-line no-console
+  console.info('%cRegistering Ionic Framework....', 'color:cyan;background-color:black;font-size:1.2em;');
+  document.documentElement.classList.add('ion-ce');
+  initialize({ ...config });
+  return container.register(IonAttributePattern, IonicComponents, IonicControllers, IonicMapper);
 }
+
+export const IonicAurelia = {
+  register(container: IContainer): IContainer {
+    return setup(container);
+  },
+  customize(config: IonicConfig = {}) {
+    return {
+      register(container: IContainer): IContainer {
+        return setup(container, config);
+      },
+    };
+  },
+};

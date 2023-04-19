@@ -32,7 +32,9 @@ void new Aurelia()
     ValidationHtmlConfiguration.customize((x) => {
       x.DefaultTrigger = ValidationTrigger.change;
     }),
-    IonicAurelia.config(),
+    IonicAurelia.customize({
+      mode: 'ios',
+    }),
   )
   .app({
     component: App,
