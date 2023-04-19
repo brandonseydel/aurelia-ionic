@@ -62,7 +62,7 @@
     "dev": "vite",
     "start": "vite",
     "build": "tsc && vite build",
-    "prepublishOnly": "npx rimraf dist && npm version patch && npm run build",
+    "prepublishOnly": "npx rimraf dist && npm run build && npm version patch",
     "preview": "vite preview",
     "test:e2e": "cypress run",
     "test:unit": "vitest",
