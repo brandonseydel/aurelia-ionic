@@ -1,3 +1,5 @@
+import { IPlatform, Registration } from '@aurelia/kernel';
+import { BrowserPlatform } from '@aurelia/platform-browser';
 import { RouterConfiguration } from '@aurelia/router-lite';
 import { Aurelia, ShortHandBindingSyntax, StandardConfiguration } from '@aurelia/runtime-html';
 import { ValidationHtmlConfiguration, ValidationTrigger } from '@aurelia/validation-html';
@@ -23,6 +25,7 @@ import './theme/variables.scss';
 
 void new Aurelia()
   .register(
+    Registration.instance(IPlatform, BrowserPlatform.getOrCreate(globalThis)),
     StandardConfiguration,
     ShortHandBindingSyntax,
     RouterConfiguration.customize({ useUrlFragmentHash: false }),
