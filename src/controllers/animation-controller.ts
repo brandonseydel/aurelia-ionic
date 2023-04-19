@@ -1,5 +1,8 @@
+import { singleton } from '@aurelia/kernel';
+
 import { Animation, createAnimation, getTimeGivenProgression } from '@ionic/core/components';
 
+@singleton()
 export class AnimationController {
   /**
    * Create a new animation

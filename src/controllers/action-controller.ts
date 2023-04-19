@@ -1,8 +1,11 @@
+import { singleton } from '@aurelia/kernel';
+
 import { actionSheetController, type ActionSheetOptions } from '@ionic/core/components';
 import { defineCustomElement } from '@ionic/core/components/ion-action-sheet';
 
 type ActionSheetControllerType = typeof actionSheetController;
 
+@singleton()
 export class ActionSheetController implements ActionSheetControllerType {
   constructor() {
     defineCustomElement();

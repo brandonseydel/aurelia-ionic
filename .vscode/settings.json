@@ -1,6 +1,45 @@
 {
-    "html.customData": [
-      "./node_modules/@ionic/core/dist/html.html-data.json"
-    ],
-    "typescript.tsdk": "node_modules\\typescript\\lib"
-  }
+  "files.eol": "\n",
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "editor.formatOnPaste": false, // required
+  "editor.formatOnType": false, // required
+  "editor.formatOnSave": true, // optional
+  "editor.linkedEditing": true,
+  "html.autoClosingTags": true,
+  "javascript.autoClosingTags": true,
+  "typescript.autoClosingTags": true,
+  "editor.formatOnSaveMode": "file", // required to format on save
+  "files.autoSave": "onFocusChange", // optional but recommended
+  "files.exclude": {
+    "**/.webpack": true
+  },
+  "javascript.format.enable": false,
+  "typescript.format.enable": false,
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+  "eslint.validate": [
+    "javascript",
+    "typescript"
+  ],
+  "eslint.alwaysShowStatus": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
+  "exportall.config.relExclusion": [
+    "/src/design-system"
+  ],
+  "exportall.config.folderListener": [
+    "/src/design-system/elements",
+  ],
+  "[html]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  },
+  "html.customData": [
+    "./node_modules/@ionic/core/dist/html.html-data.json"
+  ],
+  "typescript.tsdk": "node_modules\\typescript\\lib"
+}

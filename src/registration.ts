@@ -32,8 +32,6 @@ export class IonicAurelia implements IRegistry {
     initialize({ ...this.config });
 
     container.register([
-      Registration.aliasTo(LoadCustomAttribute, CustomAttribute.keyFrom('router-link')),
-      Registration.aliasTo(ViewportCustomElement, CustomElement.keyFrom('ion-router-outlet')),
       IonAttributePattern,
       IonicComponents,
       IonicControllers,

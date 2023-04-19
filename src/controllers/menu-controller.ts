@@ -1,5 +1,8 @@
+import { singleton } from '@aurelia/kernel';
+
 import { menuController } from '@ionic/core/components';
 
+@singleton()
 export class MenuController {
   /**
    * Programmatically open the Menu.

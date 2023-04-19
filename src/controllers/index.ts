@@ -1,5 +1,5 @@
 export * from './action-controller';
-export * from './aler-controller';
+export * from './alert-controller';
 export * from './animation-controller';
 export * from './config';
 export * from './framework-delegate';

@@ -1,8 +1,11 @@
+import { singleton } from '@aurelia/kernel';
+
 import { toastController, type ToastOptions } from '@ionic/core/components';
 import { defineCustomElement } from '@ionic/core/components/ion-toast';
 
 type ToastControllerType = typeof toastController;
 
+@singleton()
 export class ToastController implements ToastControllerType {
   create(options: ToastOptions): Promise<HTMLIonToastElement> {
     defineCustomElement();

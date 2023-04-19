@@ -1,8 +1,11 @@
+import { singleton } from '@aurelia/kernel';
+
 import { loadingController, LoadingOptions } from '@ionic/core/components';
 import { defineCustomElement } from '@ionic/core/components/ion-loading';
 
 type LoadingControllerType = typeof loadingController;
 
+@singleton()
 export class LoadingController implements LoadingControllerType {
   create(options: LoadingOptions): Promise<HTMLIonLoadingElement> {
     defineCustomElement();

@@ -1,10 +1,10 @@
-import { IRouter } from "@aurelia/router-lite";
-import { customElement } from "aurelia";
+import { customElement } from 'aurelia';
+import { IRouter } from '@aurelia/router-lite';
 
-@customElement({name:'folder', containerless: true, template:`
-
-
-
+@customElement({
+  name: 'folder',
+  containerless: true,
+  template: `
 <ion-page>
 <ion-header :translucent="true">
   <ion-toolbar>
@@ -29,17 +29,13 @@ import { customElement } from "aurelia";
 </ion-content>
 </ion-page>
 
-`})
-export class Folder{
+`,
+})
+export class Folder {
+  constructor(@IRouter private router: IRouter) {}
 
-
-    constructor(@IRouter private router:IRouter){
-    }
-
-    get id(){
-        console.log(this.router.currentTr.finalInstructions.children[0])
-        return this.router.currentTr.finalInstructions.children[0].recognizedRoute?.route.params.id
-
-    }
-
+  get id() {
+    console.log(this.router.currentTr.finalInstructions.children[0]);
+    return this.router.currentTr.finalInstructions.children[0].recognizedRoute?.route.params.id;
+  }
 }

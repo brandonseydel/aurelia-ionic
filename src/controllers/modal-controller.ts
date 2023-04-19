@@ -1,4 +1,4 @@
-import { inject } from '@aurelia/kernel';
+import { singleton } from '@aurelia/kernel';
 
 import { AureliaDelegate } from './framework-delegate';
 
@@ -7,7 +7,7 @@ import { defineCustomElement } from '@ionic/core/components/ion-modal';
 
 type ModalControllerType = typeof modalController;
 
-@inject()
+@singleton()
 export class ModalController implements ModalControllerType {
   constructor(private readonly delegate: AureliaDelegate) {}
   create<T extends ComponentRef>(options: ModalOptions<T>): Promise<HTMLIonModalElement> {

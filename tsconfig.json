@@ -1,19 +1,7 @@
 {
-  "compilerOptions": {
-    "noEmit": true,
-    "strict": false,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "skipLibCheck": true,
-    "target": "es2022",
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "importHelpers": true,
-    "forceConsistentCasingInFileNames": true,
-    "strictNullChecks": true,
-    "rootDir": ".",
-  },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "dev-app/**/*.ts", "dev-app/**/*.d.ts", ],
+  "include": [
+    "src/**/*.ts",
+    "dev-app/**/*.ts",
+  ],
+  "extends": "./tsconfig.build.json"
 }

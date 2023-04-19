@@ -1,4 +1,4 @@
-import { inject } from '@aurelia/kernel';
+import { singleton } from '@aurelia/kernel';
 
 import { AureliaDelegate } from './framework-delegate';
 
@@ -7,7 +7,7 @@ import { defineCustomElement } from '@ionic/core/components/ion-popover';
 
 type PopoverControllerType = typeof popoverController;
 
-@inject()
+@singleton()
 export class PopoverController implements PopoverControllerType {
   constructor(private readonly delegate: AureliaDelegate) {}
 

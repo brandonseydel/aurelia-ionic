@@ -1,25 +1,41 @@
+import { route } from '@aurelia/router-lite';
+import { customElement, ICustomElementViewModel } from '@aurelia/runtime-html';
 
-import { ICustomElementViewModel, customElement, } from "aurelia";
 import template from './app.html?raw';
-import './app.scss';
-import { mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline } from "ionicons/icons";
-import { route } from "@aurelia/router-lite";
 
-@customElement({ name: 'app', template:template })
+import './app.scss';
+
+import {
+  archiveOutline,
+  archiveSharp,
+  bookmarkOutline,
+  heartOutline,
+  heartSharp,
+  mailOutline,
+  mailSharp,
+  paperPlaneOutline,
+  paperPlaneSharp,
+  trashOutline,
+  trashSharp,
+  warningOutline,
+  warningSharp,
+} from 'ionicons/icons';
+
+@customElement({ name: 'app', template: template })
 @route({
-  routes:[
+  routes: [
     {
       path: '',
-      redirectTo:'/folder/Inbox'
+      redirectTo: '/folder/Inbox',
     },
     {
       path: '/folder/:id',
-      component: () => import ('../pages/folder')
-    }
-  ]
+      component: () => import('../pages/folder'),
+    },
+  ],
 })
-export class App implements ICustomElementViewModel  {
-  selectedIndex= 0;
+export class App implements ICustomElementViewModel {
+  selectedIndex = 0;
   bookmarkOutline = bookmarkOutline;
   appPages = [
     {
