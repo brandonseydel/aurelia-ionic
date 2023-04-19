@@ -1,7 +1,7 @@
 {
   "name": "aurelia-ionic",
   "description": "An ionic aurelia adapter",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "type": "module",
   "license": "MIT",
   "author": {
@@ -28,12 +28,12 @@
   "devDependencies": {
     "sass": "^1.62.0",
     "@rollup/plugin-commonjs": "^24.1.0",
-    "@aurelia/platform-browser": "dev",
-    "@aurelia/kernel": "dev",
-    "@aurelia/runtime": "dev",
-    "@aurelia/runtime-html": "dev",
-    "@aurelia/router-lite": "dev",
-    "@aurelia/validation-html": "dev",
+    "@aurelia/platform-browser": "latest",
+    "@aurelia/kernel": "latest",
+    "@aurelia/runtime": "latest",
+    "@aurelia/runtime-html": "latest",
+    "@aurelia/router-lite": "latest",
+    "@aurelia/validation-html": "latest",
     "@capacitor/android": "next",
     "@capacitor/app": "next",
     "@capacitor/core": "next",
@@ -41,7 +41,7 @@
     "@capacitor/ios": "next",
     "@capacitor/keyboard": "next",
     "@capacitor/status-bar": "next",
-    "@aurelia/vite-plugin": "dev",
+    "@aurelia/vite-plugin": "latest",
     "@typescript-eslint/eslint-plugin": "^5.59.0",
     "@capacitor/cli": "next",
     "eslint": "^8.38.0",
@@ -59,7 +59,7 @@
     "rollup-plugin-typescript-paths": "^1.4.0"
   },
   "scripts": {
-    "dev": "vite",
+    "latest": "vite",
     "start": "vite",
     "build": "tsc && vite build",
     "prepublishOnly": "npm version patch && npx rimraf dist && npm run build",
@@ -73,6 +73,6 @@
     "lint:html": "htmlhint -c .htmlhintrc src design-system ",
     "lint": "npm run lint:js && npm run lint:html",
     "ionic:build": "npm run build",
-    "ionic:serve": "npm run dev"
+    "ionic:serve": "npm run latest"
   }
 }
