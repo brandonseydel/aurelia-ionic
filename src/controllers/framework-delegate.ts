@@ -5,7 +5,7 @@ import { FrameworkDelegate } from '@ionic/core/components';
 
 @singleton()
 export class AureliaDelegate implements FrameworkDelegate {
-  // constructor(@IContainer readonly container: IContainer) {}
+  constructor(@IContainer readonly container: IContainer) {}
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async removeViewFromDom(_: any, component: HTMLElement): Promise<void> {
@@ -14,7 +14,7 @@ export class AureliaDelegate implements FrameworkDelegate {
   }
 
   async attachViewToDom(parentElement: HTMLElement, component: Constructable, opts?: object, classes?: string[]): Promise<HTMLElement> {
-    const controller = Controller.$el({} as IContainer, component, parentElement, null);
+    const controller = Controller.$el(this.container, component, parentElement, null);
     if (classes?.length) controller.host.classList.add(...classes);
 
     if (opts) {
