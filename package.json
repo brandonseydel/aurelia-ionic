@@ -1,7 +1,7 @@
 {
   "name": "aurelia-ionic",
   "description": "An ionic aurelia adapter",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "type": "module",
   "license": "MIT",
   "author": {
