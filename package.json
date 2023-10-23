@@ -22,8 +22,8 @@
     "dist"
   ],
   "dependencies": {
-    "@ionic/core": "^7.0.2",
-    "ionicons": "^7.1.0"
+    "@ionic/core": "^7.5.1",
+    "ionicons": "^7.2.1"
   },
   "devDependencies": {
     "sass": "^1.62.0",
