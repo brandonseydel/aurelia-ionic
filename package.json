@@ -19,7 +19,15 @@
   "module": "./dist/index.js",
   "typings": "./dist/src/index.d.ts",
   "files": [
-    "dist"
+    "dist/**/*.cjs",
+    "dist/**/*.dev.cjs.map",
+    "dist/**/*.mjs",
+    "dist/**/*.dev.mjs.map",
+    "dist/**/*.d.ts",
+    "src/**/*.ts",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
   ],
   "dependencies": {
     "@ionic/core": "^7.5.1",

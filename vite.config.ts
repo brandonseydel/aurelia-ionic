@@ -9,6 +9,7 @@ export default defineConfig({
     manifest: true,
     minify: true,
     reportCompressedSize: true,
+    sourcemap: true,
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
       name: 'aurelia-ionic',
@@ -16,13 +17,13 @@ export default defineConfig({
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      external: Object.keys(packageJson.peerDependencies),
+      external: Object.keys(packageJson.peerDependencies).concat(Object.keys(packageJson.dependencies)),
       plugins: [
         typescriptPaths({
           preserveExtensions: true,
         }),
         typescript({
-          sourceMap: false,
+          sourceMap: true,          
           declaration: true,
           outDir: 'dist',
           exclude: ['**/__tests__'],
