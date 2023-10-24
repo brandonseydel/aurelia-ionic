@@ -59,12 +59,7 @@
   },
   "peerDependencies": {
     "@aurelia/vite-plugin": "latest",
-    "@aurelia/platform-browser": "latest",
-    "@aurelia/kernel": "latest",
-    "@aurelia/runtime": "latest",
-    "@aurelia/runtime-html": "latest",
-    "@aurelia/router-lite": "latest",
-    "@aurelia/validation-html": "latest"
+    "aurelia": "latest"
   },
   "scripts": {
     "latest": "vite",
