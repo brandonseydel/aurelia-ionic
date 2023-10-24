@@ -6,6 +6,8 @@ import * as IonicControllers from './controllers';
 import { IonicMapper } from './ionic-mapper';
 
 import { initialize, IonicConfig } from '@ionic/core/components';
+import { Keyboard } from './keyboard';
+import { Backbutton } from './back-button';
 
 @attributePattern({ pattern: 'ion-PART', symbols: '-' })
 class IonAttributePattern {
@@ -19,7 +21,7 @@ function setup(container: IContainer, config: IonicConfig = {}): IContainer {
   console.info('%cRegistering Ionic Framework....', 'color:cyan;background-color:black;font-size:1.2em;');
   document.documentElement.classList.add('ion-ce');
   initialize({ ...config });
-  return container.register(IonAttributePattern, IonicComponents, IonicControllers, IonicMapper);
+  return container.register(IonAttributePattern, IonicComponents, IonicControllers, IonicMapper, Keyboard, Backbutton);
 }
 
 export const IonicAurelia = {

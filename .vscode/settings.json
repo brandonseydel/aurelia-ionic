@@ -41,5 +41,5 @@
   "html.customData": [
     "./node_modules/@ionic/core/dist/html.html-data.json"
   ],
-  "typescript.tsdk": "node_modules\\typescript\\lib"
+  "typescript.tsdk": "node_modules\\typescript\\lib",
 }

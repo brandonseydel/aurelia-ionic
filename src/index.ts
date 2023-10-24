@@ -2,7 +2,9 @@ export * from './components';
 export * from './controllers';
 export { IonicAurelia } from './registration';
 
+
 export {
+  
   // UTILS
   createAnimation,
   createGesture,
@@ -13,6 +15,7 @@ export {
   isPlatform,
   menuController,
   getTimeGivenProgression,
+    getIonPageElement,
 
   // TYPES
   Animation,

@@ -82,5 +82,6 @@
     "lint": "npm run lint:js && npm run lint:html",
     "ionic:build": "npm run build",
     "ionic:serve": "npm run latest"
-  }
+  },
+  "customElements": "./node_modules/@ionic/core/dist/html.html-data.json"
 }

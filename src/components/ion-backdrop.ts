@@ -1,6 +1,8 @@
 import { defineCustomElement as defineBackgrop } from '@ionic/core/components/ion-backdrop';
+import { type Components } from '@ionic/core/components';
 
-export const IonBackgrop = {
+export type IonBackdrop = Components.IonBackdrop;
+export const IonBackdrop = {
   register() {
     defineBackgrop();
   },
