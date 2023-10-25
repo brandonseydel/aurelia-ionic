@@ -80,3 +80,4 @@ export * from './ion-title';
 export * from './ion-toast';
 export * from './ion-toggle';
 export * from './ion-toolbar';
+export * from './ion-page';
